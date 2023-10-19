@@ -3,17 +3,17 @@
 
 <div class="quiz-list">
 
-<h1>Quiz List</h1>
+  <h1>Quiz List</h1>
 
-{% for quiz in quiz %}
+  {% for quiz in quiz %}
   <div class="card">
     <a href="{% url 'quiz_detail' quiz.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ quiz.title }}</span>
-    </div>
-</a>
+      <div class="card-content">
+        <span class="card-title">{{ quiz.title }}</span>
+      </div>
+    </a>
   </div>
 
-{% endfor %}
+  {% endfor %}
 </div>
 {% endblock %}

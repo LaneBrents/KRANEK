@@ -52,13 +52,15 @@
             </ul>
           </li>
           <li class="nav-item"><button class="btn btn-info">
-            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
-          </button>
+              <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+            </button>
           </li>
 
           {% else %}
-          <li><button class="btn btn-info"><a class="text-decoration-none" href="{% url 'signup' %}">Sign Up</a></button></li>
-          <li><button class="btn btn-info"><a class="text-decoration-none" href="{% url 'login' %}">Log In</a></button></li>
+          <li><button class="btn btn-info"><a class="text-decoration-none" href="{% url 'signup' %}">Sign
+                Up</a></button></li>
+          <li><button class="btn btn-info"><a class="text-decoration-none" href="{% url 'login' %}">Log In</a></button>
+          </li>
           {% endif %}
         </ul>
       </div>

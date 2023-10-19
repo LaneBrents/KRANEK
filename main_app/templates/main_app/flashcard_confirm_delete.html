@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="delete-flashcard">
-  
+
   <h1>Delete Flashcard</h1>
 
   <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
@@ -13,5 +13,5 @@
     <a href="{% url 'flashcards_detail' object.id %}">Cancel</a>
   </form>
 
-  </div>
+</div>
 {% endblock %}

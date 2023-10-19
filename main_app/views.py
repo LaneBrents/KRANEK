@@ -27,8 +27,6 @@ BUCKET = 'kranek'
 #============================================= Adding the Signup form ===================================================#
 
 
-
-
 def signup(request):
    # this will handle the POST Request to /accounts/signup
     # Will process the form submission, add the form data to the database
@@ -54,7 +52,6 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
 
 #========================================== Create a user profile after sign-up ======================================================#
-
 
     #========================================== Main home page ======================================================#
 
@@ -129,6 +126,7 @@ class FlashcardDelete(DeleteView):
 
 #========================================== My quizzes view ======================================================#
 
+
 class QuizCreate(CreateView):
     model = Quiz
     fields = ['title']
@@ -137,14 +135,14 @@ class QuizCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 @login_required
 def quiz_detail(request, quiz_id):
     quiz = Quiz.objects.get(id=quiz_id)
     question_form = QuestionForm
     questions = Question.objects.exclude(
         id__in=quiz.questions.all().values_list('id'))
-    return render(request, 'quiz/detail.html', {'quiz': quiz, 'question_form': question_form, 'questions':questions})
-
+    return render(request, 'quiz/detail.html', {'quiz': quiz, 'question_form': question_form, 'questions': questions})
 
 
 class QuizUpdate(LoginRequiredMixin, UpdateView):
@@ -171,6 +169,7 @@ def add_question(request, quiz_id):
         new_question.quiz_id = quiz_id
         new_question.save()
     return redirect('quiz_detail', quiz_id=quiz_id)
+
 
 @login_required
 def assoc_question(request, quiz_id, question_id):
@@ -207,22 +206,3 @@ class QuestionDelete(LoginRequiredMixin, DeleteView):
 
     success_url = '/questions/'
 
-
-
-#============================================= Inserting a photo ===================================================#
-
-# def add_photo(request, cat_id):
-#     photo_file = request.FILES.get('photo-file', None)
-#     if photo_file:
-#         s3 = boto3.client('s3')
-#         key = uuid.uuid4().hex[:6] + \
-#             photo_file.name[photo_file.name.rfind('.'):]
-#         try:
-#             s3.upload_fileobj(photo_file, BUCKET, key)
-#             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-#             Photo.objects.create(url=url, flashcard_id=flashcard_id)
-#         except:
-#             print('An error accoured uploading file to S3')
-#     return redirect('detail', flashcard_id=flashcard_id)
-
-#=======================oooo=======================================================================#
